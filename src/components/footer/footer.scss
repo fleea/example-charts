@@ -1,0 +1,12 @@
+.footer {
+  height:10vh;
+  min-height:10vh;
+  background-color: #f1faee;
+  overflow: hidden;
+  &__chart-container {
+    height: 10.5vh;
+    width: 120vw;
+    position: relative;
+    left: -10vw;
+  }
+}

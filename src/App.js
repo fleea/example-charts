@@ -1,15 +1,19 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import ChartContainer from "./components/chart/chart";
 import Grid from '@material-ui/core/Grid';
+import Footer from "./components/footer/footer";
 
 const App = () => {
   return (
-      <Grid container spacing={3}>
-          <Grid item xs={4}>
-              <ChartContainer/>
+      <>
+          <Grid container className="banner">
+              <Grid item xs={3}>
+                  <ChartContainer/>
+              </Grid>
           </Grid>
-      </Grid>
+          <Footer/>
+      </>
   );
 };
 
