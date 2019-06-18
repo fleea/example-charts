@@ -25,7 +25,12 @@ const ChartContainer = () => {
     const [datasets, setDatasets] = useState(lineChart.datasets);
     const [options, setOptions] = useState(defaultOption);
     const [labels, setLabels] = useState(lineChart.labels);
-    const onChartTypeChange = key => setType(key);
+    const onChartTypeChange = key => {
+        setType(key);
+        const selectedOption = chartTypes.find(type => type.key === key)
+        setDatasets(selectedOption.datasets);
+        setLabels(selectedOption.labels);
+    };
     return (
         <>
             <SelectChart options={chartTypes} onSelectChange={onChartTypeChange} defaultValue={type}/>
