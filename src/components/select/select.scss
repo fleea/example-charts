@@ -1,0 +1,19 @@
+.explanation  {
+  max-width: 400px;
+  opacity: 0.8;
+  font-size: 0.8rem;
+  .MuiSelect-select & {
+    display: none;
+  }
+}
+li {
+  &.MuiButtonBase-root {
+    display: block;
+  }
+  &.MuiMenuItem-root {
+    white-space: initial;
+  }
+  &.MuiList-padding {
+    padding: 0;
+  }
+}

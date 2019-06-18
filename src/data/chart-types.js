@@ -17,7 +17,7 @@ export const chartTypes = [
     {
         key: 'pie',
         value: 'Doughnut/Pie Chart',
-        explanation: 'Doughnut and Pie'
+        explanation: 'Doughnut/Pie Charts are divided into segments, the arc of each segment shows the proportional value of each piece of data. They are excellent at showing the relational proportions between data.'
     },
     {
         key: 'polarArea',

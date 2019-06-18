@@ -8,7 +8,8 @@ const App = () => {
   return (
       <>
           <Grid container className="banner">
-              <Grid item xs={3}>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={7}>
                   <ChartContainer/>
               </Grid>
           </Grid>

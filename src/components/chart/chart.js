@@ -1,47 +1,36 @@
 import React, { useEffect, useState, useRef} from 'react';
 import Chart from "chart.js";
 import {chartTypes} from "../../data/chart-types";
+import SelectChart from "../select/select-chart";
+import {defaultOption} from "./options";
+import {lineChart} from "./data";
 
 export const ChartElement = ({type, labels, datasets, options}) => {
     const chartEl = useRef(null);
+    const [chart, setChart] = useState({});
     useEffect(() => {
-        new Chart(chartEl.current.getContext("2d"), {
+        if(chart && chart.destroy) chart.destroy();
+        const chartObj = new Chart(chartEl.current.getContext("2d"), {
             type,
             data: { labels, datasets },
             options
         });
+        setChart(chartObj);
     }, [chartEl, type, labels, datasets, options]);
     return <canvas ref={chartEl} />;
 };
 
 const ChartContainer = () => {
-    const datasets = [
-        {
-            label: "Sales",
-            data: [86, 67, 91],
-        }
-    ];
-    const [type, setType] = useState('line');
-    const [options, setOptions] = useState({});
-    const [labels, setLabels] = useState(["Jan", "Feb", "March"]);
-    const onChartTypeChange = event => {
-        setType(event.target.value);
-    };
+    const [type, setType] = useState(lineChart.type);
+    const [datasets, setDatasets] = useState(lineChart.datasets);
+    const [options, setOptions] = useState(defaultOption);
+    const [labels, setLabels] = useState(lineChart.labels);
+    const onChartTypeChange = key => setType(key);
     return (
         <>
-            <SelectChart options={chartTypes} onSelectChange={onChartTypeChange}/>
+            <SelectChart options={chartTypes} onSelectChange={onChartTypeChange} defaultValue={type}/>
             <ChartElement type={type} labels={labels} datasets={datasets} options={options}/>
         </>
-    )
-};
-const SelectChart = ({options, onSelectChange}) => {
-    return (
-        <select onChange={onSelectChange}>
-            {
-                (options || []).map(opt =>
-                    <option value={opt['key']} key={opt['key']}>{opt['value']}</option>)
-            }
-        </select>
     )
 };
 export default ChartContainer;
